@@ -1,0 +1,3 @@
+
+dfs can be used for detecting cycles
+bfs is used for coputing distance of a node from another
