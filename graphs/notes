@@ -1,3 +1,10 @@
 
 dfs can be used for detecting cycles
 bfs is used for coputing distance of a node from another
+
+map(func, iterable) -> runs func on each item of iterable
+
+This is useful in creating a list on the fly and running a func on it.
+
+Check out sample.py where I have created a namedtuple called cord. map in the code runs outerFunc() on the namedtuple created on the fly because of the map.
+

@@ -1,44 +1,32 @@
-#Assuming maze is a matrix with 0 indicating white and 1 indicating black
-def solve_maze(maze, S, E):
-    #Visited
-    if maze[S[0]][S[1]] == 2:
-        return False
+from collections import namedtuple
 
-    #Mark as visited
-    maze[S[0]][S[1]] = 2
+Coordinate = namedtuple('Coordinate', ('x', 'y'))
 
-    #We have reached the exit  
-    if S[0] == E[0] and S[1] == E[1]:
-        return True
-    
-    #Create a list of its adjacent blocks and traverse each of these blocks
-    adj = []
-    i = S[0]
-    j = S[1]
-    if i and j:
-        adj.append((i-1, j-1))
-        adj.append((i-1, j))
-        adj.append((i, j-1))
-        if i < len(maze)-1 and j < len(maze[0])-1:
-            adj.append((i+1, j+1))
-            adj.append((i, j+1))
-            adj.append((i+1, j))
-        elif i < len(maze)-1:
-            adj.append((i+1, j))
-        elif j < len(maze[0])-1:
-            adj.append((i, j+1))
-    elif i:
-        adj.append((i-1, j)
-        adj.append((i+1, j+1))
-        adj.append((i, j+1))
-        adj.append((i+1, j))
-        elif i < len(maze)-1:
-            adj.append((i+1, j))
-    elif j:
-        adj.append((i, j-1)
+BLACK, WHITE=range(2)
 
-            return any(solve_maze(maze, box, E) for box in adj if adj != 1)`:w
+def search_maze(maze, S, E):
+    if not (0 <= R.x <= len(maze) and 0 <= E.y <= len(maze[E.x]):)
+        return []
+    def search_maze_helper(S):
+        #if a square we are visiting is not white or x and y coordinates or S or E are out of range,
+        #We return false : there is no point in continuing further.
+        if not (0 <= S.x <= len(maze) and 0 <= S.y <= len(maze[S.x]) 
+                and maze[S.x][S.y] != WHITE):
+            return False
+        
+        #If not, then this is a valid white node which can be included in the result path
+        #Mark it as visited by changing it to black.
+        #Add the node to the path
+        #Check if S==E which shows we have found a path. If so, return true.
+        path.append(S)
+        maze[S.x][S.y] = BLACK
+        if S == E:
+            return True
+        #Keep doing this as long as one of the combinations of x and y combinations for the adjacent blocks for current lock gets True.
+        #If we loop through all possibilities and then did not reach anything, we just remove the current S from the path and return false.
+        if not any(map(search_maze, map(Coordinate, (S.x+1, S.x-1, S.x, S.x), (S.y, S.y, S.y-1, S.y+1)))):
+            del path[-1]
+            return False
+        return path
 
-
-From the book:
-    map(    
+    search_maze_helper(S)
